@@ -1,6 +1,6 @@
 %define api %(echo %{version} |cut -d. -f1)
 %define major %api
-%define beta beta4
+%define beta rc
 
 %define qtremoteobjects %mklibname qt%{api}remoteobjects %{major}
 %define qtremoteobjectsd %mklibname qt%{api}remoteobjects -d
