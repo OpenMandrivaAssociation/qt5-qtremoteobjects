@@ -30,6 +30,7 @@ BuildRequires:	pkgconfig(Qt5Qml)
 BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
+BuildRequires:	qlalr%{api}
 
 %description
 The Qt Remote Objects module provides an easy to use mechanism for sharing
