@@ -31,6 +31,8 @@ BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	qlalr%{api}
+# For the Provides: generator
+BuildRequires:	cmake >= 3.11.0-1
 
 %description
 The Qt Remote Objects module provides an easy to use mechanism for sharing
