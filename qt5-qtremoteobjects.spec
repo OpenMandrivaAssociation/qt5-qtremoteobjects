@@ -62,7 +62,7 @@ Requires:	%{qtremoteobjects} = %version
 Requires:	qt5-qtbase-devel = %version
 
 %description -n %{qtremoteobjectsd}
-Devel files needed to build apps based on QtRemoteObjects
+Devel files needed to build apps based on QtRemoteObjects.
 
 %files -n	%{qtremoteobjectsd}
 %{_qt5_libdir}/libQt5RemoteObjects.prl
@@ -82,15 +82,15 @@ Devel files needed to build apps based on QtRemoteObjects
 %{_libdir}/cmake/Qt5RepParser
 
 %prep
-%setup -q -n %qttarballdir
+%autosetup -n %qttarballdir -p1
 
 %build
 %qmake_qt5
-%make
+%make_build
 #------------------------------------------------------------------------------
 
 %install
-%makeinstall_std INSTALL_ROOT=%{buildroot}
+%make_install INSTALL_ROOT=%{buildroot}
 
 ## .prl/.la file love
 # nuke .prl reference(s) to %%buildroot, excessive (.la-like) libs
