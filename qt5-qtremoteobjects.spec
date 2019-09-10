@@ -9,9 +9,9 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtremoteobjects
-Version:	5.13.0
+Version:	5.13.1
 %if "%{beta}" != ""
-Release:	0.%{beta}.1
+Release:	1
 %define qttarballdir qtremoteobjects-everywhere-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%(echo %{beta} |sed -e "s,1$,,")/submodules/%{qttarballdir}.tar.xz
 %else
@@ -67,8 +67,10 @@ Devel files needed to build apps based on QtRemoteObjects.
 
 %files -n	%{qtremoteobjectsd}
 %{_qt5_libdir}/libQt5RemoteObjects.prl
+%{_qt5_libdir}/libQt5RepParser.prl
 %{_qt5_libdir}/libQt5RemoteObjects.so
 %{_qt5_libdir}/pkgconfig/Qt5RemoteObjects.pc
+%{_qt5_libdir}/pkgconfig/Qt5RepParser.pc
 %{_qt5_includedir}/QtRemoteObjects
 %{_qt5_libdir}/cmake/Qt5RemoteObjects
 %{_qt5_prefix}/mkspecs/modules/qt_lib_remoteobjects.pri
