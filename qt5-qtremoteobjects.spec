@@ -11,7 +11,7 @@
 Name:		qt5-qtremoteobjects
 Version:	5.14.0
 %if "%{beta}" != ""
-Release:	1
+Release:	0.%{beta}.1
 %define qttarballdir qtremoteobjects-everywhere-src-%{version}-%{beta}
 Source0:	http://download.qt.io/development_releases/qt/%(echo %{version}|cut -d. -f1-2)/%{version}-%{beta}/submodules/%{qttarballdir}.tar.xz
 %else
