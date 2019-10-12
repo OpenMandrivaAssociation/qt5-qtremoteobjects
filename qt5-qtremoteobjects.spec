@@ -31,6 +31,7 @@ BuildRequires:	pkgconfig(Qt5Quick)
 BuildRequires:	pkgconfig(Qt5Network)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	qlalr%{api}
+BuildRequires:	qt5-qtqml-private-devel
 # For the Provides: generator
 BuildRequires:	cmake >= 3.11.0-1
 
