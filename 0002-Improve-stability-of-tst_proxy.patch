@@ -1,0 +1,59 @@
+From 51aa7812bed68f0a741925d93b7b404e5ddbe48f Mon Sep 17 00:00:00 2001
+From: Michael Brasser <mbrasser@ford.com>
+Date: Wed, 26 Aug 2020 15:34:14 -0500
+Subject: [PATCH 2/3] Improve stability of tst_proxy
+
+Task-number: QTBUG-86241
+Change-Id: I6a23756149ef99085f6429d95a20ee64f5ef0110
+Reviewed-by: Ville Voutilainen <ville.voutilainen@qt.io>
+(cherry picked from commit 1b3eddf083e95b3433949b5f2c706ee83fa3e0e7)
+Reviewed-by: Qt Cherry-pick Bot <cherrypick_bot@qt-project.org>
+---
+ tests/auto/proxy/tst_proxy.cpp | 10 ++++------
+ 1 file changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/tests/auto/proxy/tst_proxy.cpp b/tests/auto/proxy/tst_proxy.cpp
+index aa914bc..c803e49 100644
+--- a/tests/auto/proxy/tst_proxy.cpp
++++ b/tests/auto/proxy/tst_proxy.cpp
+@@ -238,8 +238,7 @@ void ProxyTest::testProxy()
+         }
+         QSignalSpy dataSpy(rep->tracks(), SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)));
+         QVector<QModelIndex> pending;
+-        QTest::qWait(100);
+-        QCOMPARE(rep->tracks()->rowCount(), model.rowCount());
++        QTRY_COMPARE(rep->tracks()->rowCount(), model.rowCount());
+         for (int i = 0; i < rep->tracks()->rowCount(); i++)
+         {
+             // We haven't received any data yet
+@@ -315,8 +314,7 @@ void ProxyTest::testProxy()
+         QTRY_COMPARE(tracksReplica->isInitialized(), true);
+         QSignalSpy dataSpy(tracksReplica, SIGNAL(dataChanged(QModelIndex,QModelIndex,QVector<int>)));
+         QVector<QModelIndex> pending;
+-        QTest::qWait(100);
+-        QCOMPARE(tracksReplica->rowCount(), model.rowCount());
++        QTRY_COMPARE(tracksReplica->rowCount(), model.rowCount());
+         for (int i = 0; i < tracksReplica->rowCount(); i++)
+         {
+             // We haven't received any data yet
+@@ -386,7 +384,7 @@ void ProxyTest::testForwardProxy()
+ 
+     // Setup Replica
+     const QScopedPointer<EngineReplica> replica(remoteNode.acquire<EngineReplica>());
+-    QVERIFY(replica->waitForSource(1000));
++    QTRY_VERIFY(replica->waitForSource(300));
+ 
+     // Compare Replica to Source
+     QCOMPARE(replica->rpm(), engine.rpm());
+@@ -422,7 +420,7 @@ void ProxyTest::testReverseProxy()
+ 
+     // Setup Replica
+     const QScopedPointer<EngineReplica> replica(host.acquire<EngineReplica>());
+-    QVERIFY(replica->waitForSource(1000));
++    QTRY_VERIFY(replica->waitForSource(300));
+ 
+     //Compare Replica to Source
+     QCOMPARE(replica->rpm(), engine.rpm());
+-- 
+2.31.1
+
