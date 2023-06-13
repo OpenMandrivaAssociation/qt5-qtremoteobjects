@@ -9,7 +9,7 @@
 %define _qt5_prefix %{_libdir}/qt%{api}
 
 Name:		qt5-qtremoteobjects
-Version:	5.15.9
+Version:	5.15.10
 %if "%{beta}" != ""
 Release:	0.%{beta}.1
 %define qttarballdir qtremoteobjects-everywhere-src-%{version}-%{beta}
